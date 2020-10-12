@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 const Post = props => {
     const { id } = useParams();
-    const post = props.post[id];
+    const post = props.posts[id];
 
     return (
         <article>

@@ -27,6 +27,10 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
+          <Route path="*">
+            <h2>PAGE NOT FOUND</h2>
+            <Link to='/'>Return to Homepage</Link>
+          </Route>
         </Switch>
       </Router>
     </div>

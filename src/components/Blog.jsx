@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch, Route } from "react-router-dom";
+
+import Post from './Post'
 
 const blogPosts = [
   {
@@ -18,17 +20,23 @@ const blogPosts = [
 ];
 
 const Blog = (props) => {
-  const { url } = useRouteMatch();
+  const { path,url } = useRouteMatch();
   return (
     <>
       <h1>This is the blog</h1>
       <nav>
         {blogPosts.map((post, index) => (
-          <Link to={`${url}${index}`} key={index}>
+          <Link to={`${url}/${index}`} key={`posts-${index}`}>
             {post.title}
           </Link>
         ))}
       </nav>
+      <Route exact path={path}>
+          <h2>Please select a blog post</h2>
+      </Route>
+      <Route path={`${url}/:id`}>
+          <Post posts={blogPosts} />
+      </Route>
     </>
   );
 };
